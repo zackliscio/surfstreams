@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script type="text/javascript" src="jwplayer.js"></script>
+
+    <script type="text/javascript">
+    function setFile(rtmp_file) {
+        jwplayer("player").setup({
+            bufferlength: 1,
+            autostart: true,
+            stretching: 'exactfit',
+            streamer:'rtmp://livestream.cdn-surfline.com/cdn-live-s3',
+            flashplayer: "/jwplayer.swf",
+            file: rtmp_file,
+            icons: true,
+            height: "100%",
+            width: "100%",
+            events: {
+              onBuffer: function(evt){
+                console.log('JWPlayer is buffering');
+              },
+              onError: function(evt){
+                console.log('JWPlayer caught an error');
+              }
+            }
+        })
+    }
+    </script>
+
+  </head>
+<body>
+Preset RTMP Streams:
+<a href="#" onclick="setFile('/surfline/secure/live/hi-pipelinecam?e=0&h=5928abddc9ff1a8bdc1d84e70ce389a4'); return false;">Pipeline</a>
+<a href="#" onclick="setFile('/surfline/secure/live/wc-oceanbeachncam?e=0&h=2ce1a0085d34975eb296b7d0a281ec9f'); return false;">Ocean Beach</a>
+<a href="#" onclick="setFile('/surfline/secure/live/wc-pismocam.smil/playlist.m3u8?e=1414619455&h=15f0bfc5bc1808edcc6e36625565aa54'); return false;">Pismo</a>
+<a href="#" onclick="setFile('/surfline/secure/live/wc-morrocam.smil/playlist.m3u8?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4'); return false;">Morro</a>
+<div id="player"> </div>
+
+
+http://livestream.cdn-surfline.com/cdn-live/_definst_/surfline/secure/live/wc-pismocam.smil/playlist.m3u8?e=1414619455&h=15f0bfc5bc1808edcc6e36625565aa54&pu=http://www.surfline.com/surf-report/pismo-beach-pier-central-california_5065/&t=&pt=Pismo Beach Pier - Surf Report and HD Surf Cam | SURFLINE.COM
+
+</body>
+
+</html>

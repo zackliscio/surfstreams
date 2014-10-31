@@ -1,0 +1,34 @@
+➜  surfstreams git:(master) ✗ sudo tcpdump -A -n -s 0 -r file.tcpdump | grep secure
+reading from file file.tcpdump, link-type EN10MB (Ethernet)
+.9./@"..GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/chunklist_w1306555694_b600000.m3u8?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.9.H@#.OGET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/media_w1306555694_b600000_1301.ts?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+Host: secure-us.imrworldwide.com
+Host: secure-us.imrworldwide.com
+Host: secure-us.imrworldwide.com
+.:.@...:GET /v1/jwplayer6/ping.gif?tv=9&ph=0&n=3244187633972615&aid=9CEYjuD7EeKL9xIxOQulpA&e=e&i=0&pv=6.9.4867&pi=&a=1&ed=3&ps=2&mu=http%3A%2F%2Flivestream.cdn-surfline.com%2Fcdn-live%2F_definst_%2Fsurfline%2Fsecure%2Flive%2Fwc-morrocam.smil%2Fplaylist.m3u8%3Fe%3D1414616969%26h%3Dfc36ebff4633c52d017e9b93e4b0aaf4&pu=http%3A%2F%2Fwww.surfline.com%2Fsurf-report%2Fmorro-bay-central-california_4193%2F&t=&pt=Morro%20Bay%20-%20Surf%20Report%20and%20HD%20Surf%20Cam%20%7C%20SURFLINE.COM HTTP/1.1
+.:..@#.rGET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/playlist.m3u8?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:..@#..GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/chunklist_w819823197_b600000.m3u8?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:..@#.<GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/media_w819823197_b600000_1308.ts?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:  @#..GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/media_w819823197_b600000_1309.ts?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.: 7...5GET /v1/jwplayer6/ping.gif?tv=9&ph=0&n=0756901358254254&aid=9CEYjuD7EeKL9xIxOQulpA&e=s&i=0&pv=6.9.4867&pi=&m=0&a=1&ed=3&vs=2&l=0&q=0&mu=http%3A%2F%2Flivestream.cdn-surfline.com%2Fcdn-live%2F_definst_%2Fsurfline%2Fsecure%2Flive%2Fwc-morrocam.smil%2Fplaylist.m3u8%3Fe%3D1414616969%26h%3Dfc36ebff4633c52d017e9b93e4b0aaf4&pu=http%3A%2F%2Fwww.surfline.com%2Fsurf-report%2Fmorro-bay-central-california_4193%2F&t=&pt=Morro%20Bay%20-%20Surf%20Report%20and%20HD%20Surf%20Cam%20%7C%20SURFLINE.COM HTTP/1.1
+.: w@#..GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/media_w819823197_b600000_1310.ts?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.........v..nNK...0.........q~f....;.....N.C8..0}..U..j.6...Hf.m....G..Z\s....2.8..4.........I......6..Vo...sc...{>".=.._8t...PN....a..?.....M...I...A......H.N..U. .G0E0C..U. .0;09..+........-https://www.geotrust.com/resources/repository0
+.:#.@#.	GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/chunklist_w819823197_b600000.m3u8?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:$.@#.rGET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/media_w819823197_b600000_1311.ts?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:)A@#..GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/chunklist_w819823197_b600000.m3u8?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:)V@#..GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/media_w819823197_b600000_1312.ts?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:..@#..GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/chunklist_w819823197_b600000.m3u8?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:..@#..GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/media_w819823197_b600000_1313.ts?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:3.@#..GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/chunklist_w819823197_b600000.m3u8?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:3.@$..GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/media_w819823197_b600000_1314.ts?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:4>@$..GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/media_w819823197_b600000_1315.ts?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:9 @$..GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/chunklist_w819823197_b600000.m3u8?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:>p@$..GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/chunklist_w819823197_b600000.m3u8?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:>.@$-UGET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/media_w819823197_b600000_1316.ts?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:>.@$.VGET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/media_w819823197_b600000_1317.ts?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:B.@$/%GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/chunklist_w819823197_b600000.m3u8?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:B.@$>uGET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/media_w819823197_b600000_1318.ts?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:H.@$?rGET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/chunklist_w819823197_b600000.m3u8?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+.:H,@$S.GET /cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/media_w819823197_b600000_1319.ts?e=1414616969&h=fc36ebff4633c52d017e9b93e4b0aaf4 HTTP/1.1
+
+
