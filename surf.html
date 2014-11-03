@@ -67,6 +67,46 @@ http://livestream.cdn-surfline.com/cdn-live/_definst_/surfline/secure/live/wc-mo
             }
         })
     }
+
+
+
+jQuery(function(){
+    jQuery.ajax({
+        url:"http://api.surfline.com/v1/cams/5065",
+        type: "GET",
+        dataType: "jsonp",
+        success : function(responseData){
+
+                console.log(responseData)
+                var data = responseData.streamInfo.stream[0];
+                newone(data.file);
+        },
+
+        error : function(err){
+             console.log("ERR", err);
+        }
+    });
+
+/*
+    jQuery.ajax({
+        url:"http://api.surfline.com/v1/cams/4193",
+        type: "GET",
+        dataType: "jsonp",
+        success : function(responseData){
+
+                console.log(responseData)
+                var data = responseData.streamInfo.stream[0];
+                newone(data.file);
+        },
+
+        error : function(err){
+             console.log("ERR", err);
+        }
+    });
+
+*/
+});
+
     </script>
 
   </head>
