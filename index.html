@@ -18,33 +18,15 @@
 // sudo tcpdump -A -n -s 0 -r file.tcpdump | grep  m3u8
 
 
-
 function newone(cameraStream) {
 
     jwplayer("player").setup({
         file: cameraStream
     });
 
-
-/*
-
-"http://livestream.cdn-surfline.com/cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/playlist.m3u8?e=1414795371&h=18de13353e97a86f59bdc4b46c819291"
-
-
-http://livestream.cdn-surfline.com/cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/playlist.m3u8?e=1414795371&h=18de13353e97a86f59bdc4b46c819291"
-*/
-
-
-    /**
-    jwplayer("player").setup({
-        flashplayer: "/newplayer.swf",
-        file:cameraStream,
-        width:640,
-        height:360,
-        autostart: true
-    });*/
-
 }
+
+
 
     function setFile(rtmp_file) {
         jwplayer("player").setup({
@@ -71,40 +53,54 @@ http://livestream.cdn-surfline.com/cdn-live/_definst_/surfline/secure/live/wc-mo
 
 
 jQuery(function(){
-    jQuery.ajax({
-        url:"http://api.surfline.com/v1/cams/5065",
-        type: "GET",
-        dataType: "jsonp",
-        success : function(responseData){
 
-                console.log(responseData)
-                var data = responseData.streamInfo.stream[0];
-                newone(data.file);
-        },
-
-        error : function(err){
-             console.log("ERR", err);
-        }
+    $("#pismo").click(function(){
+        alert("ADSF");
+        pismo_stream();
     });
 
-/*
-    jQuery.ajax({
-        url:"http://api.surfline.com/v1/cams/4193",
-        type: "GET",
-        dataType: "jsonp",
-        success : function(responseData){
-
-                console.log(responseData)
-                var data = responseData.streamInfo.stream[0];
-                newone(data.file);
-        },
-
-        error : function(err){
-             console.log("ERR", err);
-        }
+    $("#morro").click(function(){
+        morro_stream();
     });
 
-*/
+    function pismo_stream()
+    {
+        jQuery.ajax({
+            url:"http://api.surfline.com/v1/cams/5065",
+            type: "GET",
+            dataType: "jsonp",
+            success : function(responseData){
+
+                    console.log(responseData)
+                    var data = responseData.streamInfo.stream[0];
+                    newone(data.file);
+            },
+
+            error : function(err){
+                 console.log("ERR", err);
+            }
+        });
+    }
+
+    function morro_stream()
+    {
+        jQuery.ajax({
+            url:"http://api.surfline.com/v1/cams/4193",
+            type: "GET",
+            dataType: "jsonp",
+            success : function(responseData){
+
+                    console.log(responseData)
+                    var data = responseData.streamInfo.stream[0];
+                    newone(data.file);
+            },
+
+            error : function(err){
+                 console.log("ERR", err);
+            }
+        });
+    }
+
 });
 
     </script>
@@ -112,9 +108,10 @@ jQuery(function(){
   </head>
 <body>
 Preset RTMP Streams:
-<a href="#" onclick="newone('http://livestream.cdn-surfline.com/cdn-live/_definst_/surfline/secure/live/wc-pismocam.smil/chunklist_w1374658465_b600000.m3u8?e=1414795521&h=2c07e1c62271874899671aa09357d230'); return false;">Pismo</a>
-<a href="#" onclick="newone('http://livestream.cdn-surfline.com/cdn-live/_definst_/surfline/secure/live/wc-morrocam.smil/playlist.m3u8?e=1414795371&h=18de13353e97a86f59bdc4b46c819291'); return false;">Morro</a>
 
+<input type="button" id="morro" name="morro" value="morro" />
+
+<input type="button" id="pismo" name="pismo" value="pismo" />
 
 <div id="player"> </div>
 
