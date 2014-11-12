@@ -7,9 +7,9 @@
 
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<script src="http://e.cdn-surfline.com/global_includes/jwplayer/6.9/jwplayer.js"></script>
+<script src="jwplayer.js"></script>
 <script> jwplayer.key="YS4xpgH6/2TvlkxzmcyourFpS9w0jKSbd8cRcA==";</script>
-<script src="http://e.cdn-surfline.com/global_includes/jwplayer/6.9/jwplayer.html5.js"></script>
+<script src="jwplayer.html5.js"></script>
 <script type="text/javascript" src="http://e.cdn-surfline.com/scripts/swfobject2/swfobject.js"></script>
 
     <script type="text/javascript">
@@ -21,6 +21,7 @@
 function newone(cameraStream) {
 
     jwplayer("player").setup({
+	primary: "html5",
         file: cameraStream
     });
 
