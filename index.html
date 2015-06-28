@@ -62,6 +62,30 @@ jQuery(function(){
         morro_stream();
     });
 
+    $("#ob").click(function(){
+        ob_stream();
+    });
+
+   
+    function ob_stream()
+    {
+        jQuery.ajax({
+            url:"http://api.surfline.com/v1/cams/4127",
+            type: "GET",
+            dataType: "jsonp",
+            success : function(responseData){
+
+                    console.log(responseData)
+                    var data = responseData.streamInfo.stream[0];
+                    newone(data.file);
+            },
+
+            error : function(err){
+                 console.log("ERR", err);
+            }
+        });
+    }
+
     function pismo_stream()
     {
         jQuery.ajax({
@@ -111,6 +135,8 @@ Preset RTMP Streams:
 <input type="button" id="morro" name="morro" value="morro" />
 
 <input type="button" id="pismo" name="pismo" value="pismo" />
+
+<input type="button" id="ob" name="ob" value="ob" />
 
 <div id="player"> </div>
 
