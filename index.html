@@ -1,44 +1,22 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 
-  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
+  <script type="text/javascript" src="/jwplayer/jwplayer.html5.js"></script>
 
-  <script src="jwplayer.js"></script>
-  <script> jwplayer.key="YS4xpgH6/2TvlkxzmcyourFpS9w0jKSbd8cRcA==";</script>
-  <script src="jwplayer.html5.js"></script>
+  <!-- surfstreams key -->
+  <script type="text/javascript">jwplayer.key="YS4xpgH6/2TvlkxzmcyourFpS9w0jKSbd8cRcA==";</script>
 
   <script type="text/javascript">
 
   function newone(cameraStream) {
-    jwplayer("player").setup({
-      primary: "html5",
+    console.dir('Playing, '+cameraStream);
+    jwplayer('player').setup({
+      primary: 'html5',
       file: cameraStream
-    });
-  }
-
-  function setFile(rtmp_file) {
-    jwplayer("player").setup({
-      bufferlength: 1,
-      autostart: true,
-      stretching: 'exactfit',
-      streamer:'rtmp://livestream.cdn-surfline.com/cdn-live-s3',
-      flashplayer: "/jwplayer.swf",
-      file: rtmp_file,
-      icons: true,
-      height: "100%",
-      width: "100%",
-      events: {
-        onBuffer: function(evt){
-          console.log('JWPlayer is buffering');
-        },
-        onError: function(evt){
-          console.log('JWPlayer caught an error');
-        }
-      }
     });
   }
 
