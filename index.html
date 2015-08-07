@@ -1,145 +1,167 @@
 <html>
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/swfobject/2.2/swfobject.js"></script>
 
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
-<script src="jwplayer.js"></script>
-<script> jwplayer.key="YS4xpgH6/2TvlkxzmcyourFpS9w0jKSbd8cRcA==";</script>
-<script src="jwplayer.html5.js"></script>
+  <script src="jwplayer.js"></script>
+  <script> jwplayer.key="YS4xpgH6/2TvlkxzmcyourFpS9w0jKSbd8cRcA==";</script>
+  <script src="jwplayer.html5.js"></script>
 
-    <script type="text/javascript">
+  <script type="text/javascript">
 
-
-// sudo tcpdump -A -n -s 0 -r file.tcpdump | grep  m3u8
-
-
-function newone(cameraStream) {
-
+  function newone(cameraStream) {
     jwplayer("player").setup({
-	primary: "html5",
-        file: cameraStream
+      primary: "html5",
+      file: cameraStream
     });
+  }
 
-}
+  function setFile(rtmp_file) {
+    jwplayer("player").setup({
+      bufferlength: 1,
+      autostart: true,
+      stretching: 'exactfit',
+      streamer:'rtmp://livestream.cdn-surfline.com/cdn-live-s3',
+      flashplayer: "/jwplayer.swf",
+      file: rtmp_file,
+      icons: true,
+      height: "100%",
+      width: "100%",
+      events: {
+        onBuffer: function(evt){
+          console.log('JWPlayer is buffering');
+        },
+        onError: function(evt){
+          console.log('JWPlayer caught an error');
+        }
+      }
+    });
+  }
 
-
-
-    function setFile(rtmp_file) {
-        jwplayer("player").setup({
-            bufferlength: 1,
-            autostart: true,
-            stretching: 'exactfit',
-            streamer:'rtmp://livestream.cdn-surfline.com/cdn-live-s3',
-            flashplayer: "/jwplayer.swf",
-            file: rtmp_file,
-            icons: true,
-            height: "100%",
-            width: "100%",
-            events: {
-              onBuffer: function(evt){
-                console.log('JWPlayer is buffering');
-              },
-              onError: function(evt){
-                console.log('JWPlayer caught an error');
-              }
-            }
-        })
-    }
-
-
-
-jQuery(function(){
+  jQuery(function(){
 
     $("#pismo").click(function(){
-        pismo_stream();
+      pismo_stream();
     });
 
     $("#morro").click(function(){
-        morro_stream();
+      morro_stream();
     });
 
     $("#ob").click(function(){
-        ob_stream();
+      ob_stream();
     });
 
-   
-    function ob_stream()
-    {
-        jQuery.ajax({
-            url:"http://api.surfline.com/v1/cams/4127",
-            type: "GET",
-            dataType: "jsonp",
-            success : function(responseData){
+    $("#kawaihae").click(function(){
+      kawaihae_stream();
+    });
 
-                    console.log(responseData)
-                    var data = responseData.streamInfo.stream[0];
-                    newone(data.file);
-            },
+    $("#banyans").click(function(){
+      banyans_stream();
+    });
 
-            error : function(err){
-                 console.log("ERR", err);
-            }
-        });
+    function banyans_stream() {
+      jQuery.ajax({
+        url:"http://api.surfline.com/v1/cams/4762",
+        type: "GET",
+        dataType: "jsonp",
+        success : function(responseData){
+          console.log(responseData)
+          var data = responseData.streamInfo.stream[0];
+          newone(data.file);
+        },
+        error : function(err){
+          console.log("ERR", err);
+        }
+      });
     }
 
-    function pismo_stream()
-    {
-        jQuery.ajax({
-            url:"http://api.surfline.com/v1/cams/5065",
-            type: "GET",
-            dataType: "jsonp",
-            success : function(responseData){
+    function kawaihae_stream() {
+      jQuery.ajax({
+        url:"http://api.surfline.com/v1/cams/4763",
+        type: "GET",
+        dataType: "jsonp",
+        success : function(responseData){
+          console.log(responseData)
+          var data = responseData.streamInfo.stream[0];
+          newone(data.file);
+        },
 
-                    console.log(responseData)
-                    var data = responseData.streamInfo.stream[0];
-                    newone(data.file);
-            },
-
-            error : function(err){
-                 console.log("ERR", err);
-            }
-        });
+        error : function(err){
+          console.log("ERR", err);
+        }
+      });
     }
 
-    function morro_stream()
-    {
-        jQuery.ajax({
-            url:"http://api.surfline.com/v1/cams/4193",
-            type: "GET",
-            dataType: "jsonp",
-            success : function(responseData){
 
-                    console.log(responseData)
-                    var data = responseData.streamInfo.stream[0];
-                    newone(data.file);
-            },
-
-            error : function(err){
-                 console.log("ERR", err);
-            }
-        });
+    function ob_stream() {
+      jQuery.ajax({
+        url:"http://api.surfline.com/v1/cams/4127",
+        type: "GET",
+        dataType: "jsonp",
+        success : function(responseData){
+          console.log(responseData)
+          var data = responseData.streamInfo.stream[0];
+          newone(data.file);
+        },
+        error : function(err){
+          console.log("ERR", err);
+        }
+      });
     }
 
-});
+    function pismo_stream() {
+      jQuery.ajax({
+        url:"http://api.surfline.com/v1/cams/5065",
+        type: "GET",
+        dataType: "jsonp",
+        success : function(responseData){
+          console.log(responseData)
+          var data = responseData.streamInfo.stream[0];
+          newone(data.file);
+        },
+        error : function(err){
+          console.log("ERR", err);
+        }
+      });
+    }
 
-    </script>
-
-  </head>
+    function morro_stream() {
+      jQuery.ajax({
+        url:"http://api.surfline.com/v1/cams/4193",
+        type: "GET",
+        dataType: "jsonp",
+        success : function(responseData){
+          console.log(responseData)
+          var data = responseData.streamInfo.stream[0];
+          newone(data.file);
+        },
+        error : function(err){
+          console.log("ERR", err);
+        }
+      });
+    }
+  });
+  </script>
+</head>
 <body>
-Preset RTMP Streams:
+  Preset RTMP Streams:
 
-<input type="button" id="morro" name="morro" value="morro" />
+  <input type="button" id="morro" name="morro" value="morro" />
 
-<input type="button" id="pismo" name="pismo" value="pismo" />
+  <input type="button" id="pismo" name="pismo" value="pismo" />
 
-<input type="button" id="ob" name="ob" value="ob" />
+  <input type="button" id="ob" name="ob" value="ob" />
 
-<div id="player"> </div>
+  <input type="button" id="kawaihae" name="kawaihae" value="kawaihae" />
+
+  <input type="button" id="banyans" name="banyans" value="banyans" />
+
+  <div id="player"> </div>
 
 </body>
-
 </html>
