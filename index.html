@@ -1,8 +1,40 @@
-<html>
+<html ng-app="surfstreams">
 <head>
   <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Surf Streams</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div><!--/.container-fluid -->
+    </nav>
+
+    <div class="row">
+      <div class="col-md-12">
+        <div class="panel-group" id="accordion" ng-controller="SurfController">
+          <ss-panel ng-repeat="site in sites"></ss-panel>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js"></script>
 
   <script type="text/javascript" src="/jwplayer/jwplayer.js"></script>
   <script type="text/javascript" src="/jwplayer/jwplayer.html5.js"></script>
@@ -10,136 +42,9 @@
   <!-- surfstreams key -->
   <script type="text/javascript">jwplayer.key="YS4xpgH6/2TvlkxzmcyourFpS9w0jKSbd8cRcA==";</script>
 
-  <script type="text/javascript">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.4/angular.min.js"></script>
 
-  function newone(cameraStream) {
-    console.dir('Playing, '+cameraStream);
-    jwplayer('player').setup({
-      primary: 'html5',
-      file: cameraStream
-    });
-  }
-
-  jQuery(function(){
-
-    $("#pismo").click(function(){
-      pismo_stream();
-    });
-
-    $("#morro").click(function(){
-      morro_stream();
-    });
-
-    $("#ob").click(function(){
-      ob_stream();
-    });
-
-    $("#kawaihae").click(function(){
-      kawaihae_stream();
-    });
-
-    $("#banyans").click(function(){
-      banyans_stream();
-    });
-
-    function banyans_stream() {
-      jQuery.ajax({
-        url:"http://api.surfline.com/v1/cams/4762",
-        type: "GET",
-        dataType: "jsonp",
-        success : function(responseData){
-          console.log(responseData)
-          var data = responseData.streamInfo.stream[0];
-          newone(data.file);
-        },
-        error : function(err){
-          console.log("ERR", err);
-        }
-      });
-    }
-
-    function kawaihae_stream() {
-      jQuery.ajax({
-        url:"http://api.surfline.com/v1/cams/4763",
-        type: "GET",
-        dataType: "jsonp",
-        success : function(responseData){
-          console.log(responseData)
-          var data = responseData.streamInfo.stream[0];
-          newone(data.file);
-        },
-
-        error : function(err){
-          console.log("ERR", err);
-        }
-      });
-    }
-
-
-    function ob_stream() {
-      jQuery.ajax({
-        url:"http://api.surfline.com/v1/cams/4127",
-        type: "GET",
-        dataType: "jsonp",
-        success : function(responseData){
-          console.log(responseData)
-          var data = responseData.streamInfo.stream[0];
-          newone(data.file);
-        },
-        error : function(err){
-          console.log("ERR", err);
-        }
-      });
-    }
-
-    function pismo_stream() {
-      jQuery.ajax({
-        url:"http://api.surfline.com/v1/cams/5065",
-        type: "GET",
-        dataType: "jsonp",
-        success : function(responseData){
-          console.log(responseData)
-          var data = responseData.streamInfo.stream[0];
-          newone(data.file);
-        },
-        error : function(err){
-          console.log("ERR", err);
-        }
-      });
-    }
-
-    function morro_stream() {
-      jQuery.ajax({
-        url:"http://api.surfline.com/v1/cams/4193",
-        type: "GET",
-        dataType: "jsonp",
-        success : function(responseData){
-          console.log(responseData)
-          var data = responseData.streamInfo.stream[0];
-          newone(data.file);
-        },
-        error : function(err){
-          console.log("ERR", err);
-        }
-      });
-    }
-  });
-  </script>
-</head>
-<body>
-  Preset RTMP Streams:
-
-  <input type="button" id="morro" name="morro" value="morro" />
-
-  <input type="button" id="pismo" name="pismo" value="pismo" />
-
-  <input type="button" id="ob" name="ob" value="ob" />
-
-  <input type="button" id="kawaihae" name="kawaihae" value="kawaihae" />
-
-  <input type="button" id="banyans" name="banyans" value="banyans" />
-
-  <div id="player"> </div>
-
+  <!-- Angular app -->
+  <script type="text/javascript" src="/surf.js"></script>
 </body>
 </html>
