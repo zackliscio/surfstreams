@@ -1,14 +1,18 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h4 class="panel-title">
-      <a data-toggle="collapse" data-parent="#accordion" href="#collapse-{{site.camId}}">
+      <a data-toggle="collapse" data-parent="#accordion" href="#collapse-{{site.id}}">
         <span ng-bind="site.name"></span>
       </a>
     </h4>
   </div>
-  <div id="collapse-{{site.camId}}" class="panel-collapse collapse">
+  <div id="collapse-{{site.id}}" class="panel-collapse collapse">
     <div class="panel-body">
-      <div id="player-{{site.camId}}"></div>
+      <div class="col-md-4">
+        <div class="embed-responsive embed-responsive-16by9">
+          <div class="embed-responsive-item" id="player-{{site.id}}"></div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

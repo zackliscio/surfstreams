@@ -5,20 +5,20 @@ var app = angular.module('surfstreams', []);
 app.controller('SurfController', ['$scope', '$http', function($scope, $http) {
     // For more streams, add their name/ID here.
     $scope.sites = [{
-        name: 'Banyans, HI',
-        camId: 4762
+        id: 4762,
+        name: 'Banyans, HI'
     }, {
-        name: 'Kawaihae, HI',
-        camId: 4763
+        id: 4763,
+        name: 'Kawaihae, HI'
     }, {
-        name: 'Morro, Beach, SF',
-        camId: 4193
+        id: 4193,
+        name: 'Morro, Beach, SF'
     }, {
-        name: 'Pismo Beach, SF',
-        camId: 5065
+        id: 5065,
+        name: 'Pismo Beach, SF'
     }, {
-        name: 'Ocean Beach, SF',
-        camId: 4127
+        id: 4127,
+        name: 'Ocean Beach, SF'
     }];
 }]);
 
@@ -28,11 +28,12 @@ app.directive('ssPanel', ['$http', function($http) {
         replace: true,
         templateUrl: 'templates/panel.html',
         link: function($scope, element, attrs) {
+            $scope.analysis = 'WOOT';
 
-            var playerId = 'player-'+$scope.site.camId;
+            var playerId = 'player-' + $scope.site.id;
 
             element.on('hidden.bs.collapse', function(event) {
-                console.log('Removing player '+playerId);
+                console.log('Removing player ' + playerId);
                 jwplayer(playerId).remove();
             });
 
@@ -40,13 +41,13 @@ app.directive('ssPanel', ['$http', function($http) {
                 event.stopPropagation();
                 console.dir('show.bs.collapse');
 
-                var url = 'http://api.surfline.com/v1/cams/' + $scope.site.camId + '?callback=JSON_CALLBACK';
+                var url = 'http://api.surfline.com/v1/cams/' + $scope.site.id + '?callback=JSON_CALLBACK';
 
                 console.log(url);
 
                 $http.jsonp(url).then(
                     function(response) {
-                        console.log('Got response from Cam ID: ', $scope.site.camId);
+                        console.log('Got response from Cam ID: ', $scope.site.id);
                         console.dir(response);
 
                         var stream = response.data.streamInfo.stream[0];
@@ -56,33 +57,14 @@ app.directive('ssPanel', ['$http', function($http) {
                         jwplayer(playerId).setup({
                             primary: 'html5',
                             file: stream.file,
-                            autostart: true
+                            autostart: true,
+                            width: '100%',
+                            aspectratio: '16:9'
                         });
-
                     }, function(err) {
                         console.dir('Error reading Surfline API');
                         console.dir(err);
                     });
-                /*
-                $.ajax({
-                    url: 'http://api.surfline.com/v1/cams/' + $scope.site.camId,
-                    type: 'GET',
-                    dataType: 'jsonp',
-                    success : function(responseData){
-                        console.log('Got response from Cam ID: ', $scope.site.camId)
-                        console.dir(responseData)
-                        var data = responseData.streamInfo.stream[0];
-
-                        console.log('Showing player '+playerId);
-
-                        jwplayer(playerId).setup({
-                            primary: 'html5',
-                            file: data.file,
-                            autostart: true
-                        });
-                    }
-                });
-                */
             });
         }
     }
