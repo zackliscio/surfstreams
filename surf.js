@@ -79,7 +79,7 @@ app.controller('SiteController', ['$scope', '$http', '$sce', function($scope, $h
                 // Each element of the root array contains a list of timestamps.
                 angular.forEach(forecast.Surf.dateStamp, function(value, i) {
                     angular.forEach(value, function(dateString, j) {
-                        var t = moment(value.Localtime).format('ddd, hA');
+                        var t = moment(dateString).format('ddd, hA');
 
                         $scope.surfLabels.push(t);
                         $scope.surfData[0].push(forecast.Surf.surf_min[i][j]);
