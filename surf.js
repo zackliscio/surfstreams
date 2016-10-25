@@ -8,6 +8,9 @@ app.controller('SurfController', ['$scope', '$http', function($scope, $http) {
         id: 4762,
         name: 'Banyans, HI'
     }, {
+        id: 13830,
+        name: 'Kahalu\'u, HI'
+    }, {
         id: 10823,
         name: 'Pine Trees, HI'
     }, {
@@ -143,5 +146,3 @@ app.directive('ssPanel', ['$http', function($http) {
         }
     }
 }]);
-
-
