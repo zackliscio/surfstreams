@@ -2,6 +2,14 @@
 
 var app = angular.module('surfstreams', ['chart.js']);
 
+app.config(function($sceDelegateProvider) {
+    $sceDelegateProvider.resourceUrlWhitelist([
+        'http://api.surfline.com/**',
+        'self'
+    ]);
+});
+
+
 app.controller('SurfController', ['$scope', '$http', function($scope, $http) {
     // For more streams, add their name/ID here.
     $scope.sites = [{
@@ -11,8 +19,14 @@ app.controller('SurfController', ['$scope', '$http', function($scope, $http) {
         id: 10823,
         name: 'Pine Trees, HI'
     }, {
+        id: 13830,
+        name: 'Kahalu\'u, HI'
+    }, {
         id: 4763,
         name: 'Kawaihae, HI'
+    }, {
+        id: 4750,
+        name: 'Pipeline, HI'
     }, {
         id: 4193,
         name: 'Morro, Beach, SF'
@@ -26,7 +40,7 @@ app.controller('SurfController', ['$scope', '$http', function($scope, $http) {
 }]);
 
 app.controller('SiteController', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
-    console.dir('IN SITE CONTROLLER');
+    console.debug('Instantiating SiteController');
 
     // API query params
     var days = 3;
@@ -55,7 +69,6 @@ app.controller('SiteController', ['$scope', '$http', '$sce', function($scope, $h
 
         console.dir('Fetching forecast for site ID: ' + $scope.site.id);
         var url = 'http://api.surfline.com/v1/forecasts/'+$scope.site.id+'?resources='+resources+'&days='+days+'&getAllSpots=false&units=e&interpolate=false&showOptimal=false';
-        url += '?callback=JSON_CALLBACK';
 
         $http.jsonp(url).then(
             function(response) {
@@ -101,18 +114,20 @@ app.directive('ssPanel', ['$http', function($http) {
         replace: true,
         templateUrl: 'templates/panel.html',
         link: function($scope, element, attrs) {
-            var playerId = 'player-' + $scope.site.id;
+            var player;
+
+            var playerId = '#player-' + $scope.site.id;
 
             element.on('hidden.bs.collapse', function(event) {
                 console.log('Removing player ' + playerId);
-                jwplayer(playerId).remove();
+                if(player) player.destroy();
             });
 
             element.on('shown.bs.collapse', function(event) {
                 event.stopPropagation();
                 console.dir('show.bs.collapse');
 
-                var url = 'http://api.surfline.com/v1/cams/' + $scope.site.id + '?callback=JSON_CALLBACK';
+                var url = 'http://api.surfline.com/v1/cams/' + $scope.site.id;
 
                 console.log(url);
 
@@ -121,16 +136,16 @@ app.directive('ssPanel', ['$http', function($http) {
                         console.log('Got response from Cam ID: ', $scope.site.id);
                         console.dir(response);
 
-                        var stream = response.data.streamInfo.stream[0];
+                        var stream = response.data.streamInfo.stream[0].file;
 
-                        console.log('Showing player '+playerId);
+                        console.log('Player ' + playerId + ' playing stream: ' + stream);
 
-                        jwplayer(playerId).setup({
-                            primary: 'html5',
-                            file: stream.file,
-                            autostart: true,
+                        player = new Clappr.Player({
+                            parentId: playerId,
+                            source: stream,
+                            autoPlay: true,
                             width: '100%',
-                            aspectratio: '16:9'
+                            height: '100%'
                         });
                     }, function(err) {
                         console.dir('Error reading Surfline API');
@@ -143,5 +158,3 @@ app.directive('ssPanel', ['$http', function($http) {
         }
     }
 }]);
-
-
