@@ -13,19 +13,25 @@ app.controller('SurfController', ['$scope', '$http', function($scope, $http) {
   // For more streams, add their name/ID here.
   $scope.sites = [{
     id: 4762,
-    name: 'Banyans, HI'
+    name: 'Banyans, Big Island, HI'
+  }, {
+    id: 10824,
+    name: 'Hapuna Bay, Big Island, HI'
   }, {
     id: 13830,
-    name: 'Kahalu\'u, HI'
+    name: 'Kahalu\'u, Big Island, HI'
   }, {
     id: 4763,
-    name: 'Kawaihae, HI'
+    name: 'Kawaihae, Big Island, HI'
+  }, {
+    id: 10825,
+    name: 'Magics, Big Island, HI'
   }, {
     id: 10823,
-    name: 'Pine Trees, HI'
+    name: 'Pine Trees, Big Island, HI'
   }, {
     id: 4750,
-    name: 'Pipeline, HI'
+    name: 'Pipeline, O\'ahu, HI'
   }, {
     id: 4193,
     name: 'Morro, Beach, SF'
