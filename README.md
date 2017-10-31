@@ -2,18 +2,19 @@
 
 Surfstreams from [Surfline.com](http://surfline.com).
 
+# Install dependencies:
+
+```
+$ npm install
+```
+
 # Run:
 
 ```
-$ sudo python -m SimpleHTTPServer 8080
+$ gulp dev
 ```
 
 Then navigate to http://localhost:8080.
-
-# Donations
-
-If you'd like to donate to help support development of Surfstreams, send Bitcoin directly to
-```16XK7dnbLPihQ3s8mzD2gPVNcQFN7ymiFG``` or through Coinbase [here](https://www.coinbase.com/mgoldsborough).
 
 # Credits
 
