@@ -1,21 +1,21 @@
-Find the connect and play args by using wireshark and searching for : rtmpt.amf.type
+# Surfstreams
 
-Or tcpdump:
+Surfstreams from [Surfline.com](http://surfline.com).
 
-  sudo tcpdump -w file.tcpdump -s 0 -i wlan0
+# Install dependencies:
 
-then grep for the "secure" channel:
+```
+$ npm install
+```
 
-  tcpdump -A -n -s 0 -r file.tcpdump | grep secure
+# Run:
 
-Youll find a line like:
+```
+$ gulp dev
+```
 
-  /surfline/secure/live/hi-pipelinecam?e=0&h=blablablalalb
+Then navigate to http://localhost:8080.
 
-This is rtmp stream "file" used for streaming via the flash player I have included..
+# Credits
 
-Other useful greps:
-
-  tcpdump -A -n -s 0 -r file.tcpdump | grep  play
-
-  tcpdump -A -n -s 0 -r file.tcpdump | grep connect
+https://github.com/bbarrows

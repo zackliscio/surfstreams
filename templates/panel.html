@@ -1,0 +1,37 @@
+<div class="card" ng-controller="SiteController">
+
+  <div class="card-header">
+    <h5 class="mb-0">
+      <a data-toggle="collapse" href="#collapse-{{site.id}}">
+        <span ng-bind="site.name"></span>
+      </a>
+    </h4>
+  </div>
+
+  <div id="collapse-{{site.id}}" class="collapse">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="embed-responsive embed-responsive-4by3">
+            <div class="embed-responsive-item" id="player-{{site.id}}"></div>
+          </div>
+        </div>
+        <div class="col-md-6" ng-bind-html="analysis"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3 style="padding-left:10px">Surf</h3>
+        <canvas class="chart chart-line" chart-data="surfData" chart-labels="surfLabels" chart-series="surfSeries" chart-legend="true">
+        </canvas>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <h3 style="padding-left:10px">Tides</h3>
+        <canvas class="chart chart-line" chart-data="tideData" chart-labels="tideLabels">
+        </canvas>
+      </div>
+    </div>
+  </div>
+</div>

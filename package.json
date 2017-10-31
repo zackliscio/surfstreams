@@ -1,0 +1,17 @@
+{
+  "name": "surf.goldsborough.io",
+  "version": "0.0.1",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "browser-sync": "^2.18.13",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^3.6.0",
+    "gulp-header": "^1.8.8",
+    "gulp-less": "^3.3.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-uglify-es": "^0.1.3"
+  }
+}
