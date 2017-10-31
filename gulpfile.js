@@ -1,4 +1,4 @@
-'ust strict';
+'use strict';
 
 const browserSync = require('browser-sync').create();
 const cleanCSS = require('gulp-clean-css');
@@ -8,7 +8,7 @@ const less = require('gulp-less');
 const path = require('path');
 const pkg = require('./package.json');
 const rename = require("gulp-rename");
-const uglify = require('gulp-uglify');
+const uglify = require('gulp-uglify-es').default;
 
 // compile less
 gulp.task('less', function() {
