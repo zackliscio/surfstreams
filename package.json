@@ -12,6 +12,6 @@
     "gulp-header": "^1.8.8",
     "gulp-less": "^3.3.2",
     "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^3.0.0"
+    "gulp-uglify-es": "^0.1.3"
   }
 }
